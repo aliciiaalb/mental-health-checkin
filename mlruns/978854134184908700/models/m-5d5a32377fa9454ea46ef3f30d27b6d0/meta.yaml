@@ -1,0 +1,10 @@
+artifact_location: file:///C:/Scolarité/Efrei/M1/mental-health-checkin/mlruns/978854134184908700/models/m-5d5a32377fa9454ea46ef3f30d27b6d0/artifacts
+creation_timestamp: 1751903309947
+experiment_id: '978854134184908700'
+last_updated_timestamp: 1751903315702
+model_id: m-5d5a32377fa9454ea46ef3f30d27b6d0
+model_type: null
+name: model
+source_run_id: c830241775d7481baee909af6d514afc
+status: 2
+status_message: null

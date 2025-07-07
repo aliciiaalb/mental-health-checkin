@@ -1,0 +1,33 @@
+artifact_path: "file:///C:/Scolarit\xE9/Efrei/M1/mental-health-checkin/mlruns/978854134184908700/models/m-7340b010f9844e57938e5b00c5e82208/artifacts"
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.12.3
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.4.2
+is_signature_from_type_hint: false
+mlflow_version: 3.1.1
+model_id: m-7340b010f9844e57938e5b00c5e82208
+model_size_bytes: 39965
+model_uuid: m-7340b010f9844e57938e5b00c5e82208
+prompts: null
+run_id: ca2aae4cb32d4fd991c68b0fc7928e38
+saved_input_example_info:
+  artifact_path: input_example.json
+  pandas_orient: split
+  serving_input_path: serving_input_example.json
+  type: dataframe
+signature:
+  inputs: '[{"type": "string", "name": "text", "required": true}]'
+  outputs: '[{"type": "string", "required": true}]'
+  params: null
+type_hint_from_example: false
+utc_time_created: '2025-07-07 15:53:49.843303'

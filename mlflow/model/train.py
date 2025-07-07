@@ -8,6 +8,20 @@ import joblib
 import mlflow
 import mlflow.sklearn
 import os
+from dagshub import dagshub_logger
+from dotenv import load_dotenv
+
+load_dotenv()
+
+# Set MLflow URI and credentials
+os.environ['MLFLOW_TRACKING_URI'] = os.getenv('MLFLOW_TRACKING_URI')
+os.environ['MLFLOW_TRACKING_USERNAME'] = os.getenv('MLFLOW_TRACKING_USERNAME')
+os.environ['MLFLOW_TRACKING_PASSWORD'] = os.getenv('MLFLOW_TRACKING_PASSWORD')
+
+import mlflow
+mlflow.set_tracking_uri(os.environ['MLFLOW_TRACKING_URI'])
+mlflow.set_experiment("goemotions-baseline")
+
 
 # 1. Chargement dataset (à adapter avec DVC plus tard)
 df = pd.read_csv("data/goemotions.csv",quotechar='"')
