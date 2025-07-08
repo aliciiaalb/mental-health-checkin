@@ -1,12 +1,15 @@
 # backend/main.py
 
 from fastapi import FastAPI
-from pydantic import BaseModel
+from pydantic import BaseModel  
 import joblib
 import os
+from pathlib import Path
+from fastapi.middleware.cors import CORSMiddleware
+
 
 # Charger le modèle au lancement de l'API
-MODEL_PATH = os.path.join("mlflow", "model", "emotion_model.pkl")
+MODEL_PATH = Path(__file__).resolve().parent.parent / "mlflow" / "model" / "emotion_model.pkl"
 
 try:
     model = joblib.load(MODEL_PATH)
@@ -15,6 +18,15 @@ except Exception as e:
 
 # Initialiser FastAPI
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # ou précise ["http://localhost:5173"] pour plus de sécurité
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 
 # Définir le format de la requête
 class TextInput(BaseModel):
