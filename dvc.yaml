@@ -1,8 +1,8 @@
 stages:
   train_model:
-    cmd: python mlflow\model\train.py
+    cmd: python mlflow/model/train.py
     deps:
-    - data/goemotions.csv
-    - mlflow\model\train.py
+      - data/goemotions.csv
+      - mlflow/model/train.py
     outs:
-    - mlflow/model/emotion_model.pkl
+      - mlflow/model/emotion_model.pkl
