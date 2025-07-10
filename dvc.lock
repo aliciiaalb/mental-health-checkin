@@ -1,0 +1,18 @@
+schema: '2.0'
+stages:
+  train_model:
+    cmd: python mlflow\model\train.py
+    deps:
+    - path: data/goemotions.csv
+      hash: md5
+      md5: 6379b7cb06615679f0aa88a38e8c0feb
+      size: 10561
+    - path: mlflow\model\train.py
+      hash: md5
+      md5: 37598deb21e6314c9bce33c58fd8c0c6
+      size: 1992
+    outs:
+    - path: mlflow/model/emotion_model.pkl
+      hash: md5
+      md5: b1659ca2a4a80aaf4199f11994a53fae
+      size: 37081

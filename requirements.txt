@@ -1,0 +1,8 @@
+dagshub==0.5.10
+fastapi==0.116.0
+joblib==1.4.2
+pandas==2.0.3
+pydantic==2.11.7
+pytest==7.4.4
+python-dotenv==1.1.1
+scikit_learn==1.4.2
