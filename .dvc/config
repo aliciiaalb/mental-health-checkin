@@ -1,2 +1,4 @@
 ['remote "origin"']
     url = https://dagshub.com/aliciiaalb/mental-health-checkin.dvc
+    fetch = true
+
