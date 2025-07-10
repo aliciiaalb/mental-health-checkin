@@ -22,6 +22,11 @@ jobs:
         run: |
           pip install -r requirements.txt
           pip install dvc
+      - name: Download dataset
+        run: |
+          mkdir -p data
+          https://raw.githubusercontent.com/aliciiaalb/mental-health-checkin/data/goemotions.csv -O data/goemotions.csv
+
 
       - name: Reproduce pipeline
         run: dvc repro
