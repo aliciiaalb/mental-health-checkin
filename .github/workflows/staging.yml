@@ -23,9 +23,8 @@ jobs:
           pip install -r requirements.txt
           pip install dvc[gs]  # ajoute le support du remote Dagshub (S3-compatible)
 
-      - name: Configure DVC remote (si non dans ton .dvc/config)
-        run: |
-          dvc remote add -d origin https://dagshub.com/aliciiaalb/mental-health-checkin.dvc
+      - name: Configure DVC remote (si pas déjà fait)
+        run: dvc remote default origin
         continue-on-error: true  # Évite l'échec si déjà configuré
 
       - name: Pull dataset from DVC remote
