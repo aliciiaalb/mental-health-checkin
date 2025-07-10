@@ -21,12 +21,15 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
-          pip install dvc
-      - name: Download dataset
-        run: |
-          mkdir -p data
-          https://raw.githubusercontent.com/aliciiaalb/mental-health-checkin/data/goemotions.csv -O data/goemotions.csv
+          pip install dvc[gs]  # ajoute le support du remote Dagshub (S3-compatible)
 
+      - name: Configure DVC remote (si non dans ton .dvc/config)
+        run: |
+          dvc remote add -d origin https://dagshub.com/aliciiaalb/mental-health-checkin.dvc
+        continue-on-error: true  # Évite l'échec si déjà configuré
+
+      - name: Pull dataset from DVC remote
+        run: dvc pull
 
       - name: Reproduce pipeline
         run: dvc repro
