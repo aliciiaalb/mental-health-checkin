@@ -2,10 +2,8 @@ FROM python:3.10-slim
 
 WORKDIR /app
 
-# Copier tout le backend
+# Copier tout le backend et les fichiers nécessaires
 COPY . .
-# Copier le modèle (chemin relatif au contexte .)
-COPY mlflow/model/emotion_model.pkl ./mlflow/model/emotion_model.pkl
 
 RUN pip install --no-cache-dir -r requirements.txt
 
