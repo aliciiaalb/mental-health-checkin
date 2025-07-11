@@ -12,7 +12,7 @@ export default function App() {
   const handleSubmit = async () => {
     setLoading(true);
     try {
-      const res = await fetch("http://localhost:8000/analyze", {
+      const res = await fetch("https://mental-health-checkin-production.up.railway.app/analyze", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -32,6 +32,11 @@ app.add_middleware(
 class TextInput(BaseModel):
     message: str
 
+
+@app.get("/")
+def read_root():
+    return {"message": "Mental Health Check-in API is live!"}
+
 # Définir le endpoint
 @app.post("/analyze")
 def analyze_emotion(text: TextInput):
