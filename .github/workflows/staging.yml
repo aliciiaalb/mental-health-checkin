@@ -1,13 +1,20 @@
 name: Staging Build & Test
 
-on:
-  push:
-    branches:
-      - staging
+on: [push, pull_request]
 
 jobs:
   test:
     runs-on: ubuntu-latest
+
+    services:
+      fastapi:
+        image: tiangolo/uvicorn-gunicorn-fastapi:python3.8
+        ports:
+          - 8000:80
+        env:
+          MODULE_NAME: backend.main  # ou backend.main:app selon ton layout
+          VARIABLE_NAME: app
+        options: --health-cmd "curl http://localhost:80/docs" --health-interval=5s --health-timeout=5s --health-retries=5
 
     steps:
       - uses: actions/checkout@v3
@@ -19,8 +26,13 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install -r backend/requirements.txt
-          pip install pytest requests httpx
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Wait for API to be ready
+        run: |
+          echo "Waiting for FastAPI..."
+          sleep 10  # mieux: script qui ping /docs jusqu'à succès
 
       - name: Run tests
-        run: pytest tests/
+        run: pytest
