@@ -6,6 +6,15 @@ from backend.main import app
 
 client = TestClient(app)
 
+import joblib
+from pathlib import Path
+
+def test_model_loading():
+    model_path = Path(__file__).resolve().parents[2] / "mlflow" / "model" / "emotion_model.pkl"
+    model = joblib.load(model_path)
+    assert model is not None
+
+
 def test_analyze_prediction():
     # Exemple de texte à analyser
     sample_input = {

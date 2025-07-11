@@ -9,7 +9,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 
 # Charger le modèle au lancement de l'API
-MODEL_PATH = Path(__file__).resolve().parent.parent / "mlflow" / "model" / "emotion_model.pkl"
+MODEL_PATH = Path(__file__).resolve().parents[1] / "mlflow" / "model" / "emotion_model.pkl"
 
 try:
     model = joblib.load(MODEL_PATH)
